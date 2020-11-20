@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A depth first search that works through a maze you make for it">
+    <title>DFS Maze</title>
+    <!--Resources:-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <div class="controls">
+            <p>Height:</p>
+            <input type="text" id="maze-height" placeholder="30">
+            <p>Width:</p>
+            <input type="text" id="maze-width" placeholder="30">
+            <select name="buildtype" id="buildtype">
+                <option value="custom">Custom</option>
+                <option value="rand10">Random 10%</option>
+                <option value="rand30">Random 30%</option>
+            </select>
+            <button type="button" id="build">Build</button>
+            <select name="buildtype" id="solvetype">
+                <option value="preflast">Prefer Last Successful</option>
+                <option value="prefdown">Prefer Down</option>
+                <option value="prefrand">Prefer Random</option>
+            </select>
+            <button type="button" id="solve">Solve</button>
+        </div>
+        <div class="field">
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

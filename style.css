@@ -1,0 +1,41 @@
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+.controls * {
+    margin-left: 25px;
+}
+.controls input {
+    height: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+}
+.maze-block {
+    height: 15px;
+    width: 15px;
+    border: 1px solid black;
+}
+
+.maze-line {
+    display: flex;
+    flex-direction: row;
+}
+
+.starting-cell {
+    background-color: rgb(69, 190, 110);
+}
+
+.ending-cell {
+    background-color: rgb(216, 27, 27);
+}
+
+.blocked-cell {
+    background-color: black;
+}
+.pathway {
+    background-color: #999;
+}
