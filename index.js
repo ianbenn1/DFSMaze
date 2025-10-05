@@ -259,6 +259,9 @@ async function solver(maze_size_x, maze_size_y) {
                  if (currentPosition == undefined)
                  {
                      console.log("Nothing left in stack. done");
+                     let solvedtext = document.createElement("h4");
+                     solvedtext.innerHTML = `Attempted ${count} steps. Maze cannot be solved.`;
+                     document.getElementsByClassName('field')[0].appendChild(solvedtext);
                      return;
                  }
              }
