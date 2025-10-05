@@ -22,6 +22,19 @@ document.getElementById('solve').onclick = function() {
     solver(MAZEX, MAZEY);
 };
 
+document.getElementById('reset').onclick = function() {
+    Array.from(document.getElementsByClassName(`maze-block`)).forEach(element => {
+        if(element.dataset.taken &&
+            !element.classList.contains("blocked-cell") &&
+            !element.classList.contains("starting-cell") &&
+            !element.classList.contains("ending-cell")) {
+                element.dataset.taken = false;
+                element.style.backgroundColor = "";
+                element.style.opacity = "";
+        }
+    })
+};
+
 document.getElementById("buildtype").onchange = (e) => {
 console.log("Changed: " + e.target.value);
 if (e.target.value == "custom")
@@ -102,7 +115,7 @@ async function mazeBuilder(x, y) {
 }
 
 
-function solver(maze_size_x, maze_size_y) {
+async function solver(maze_size_x, maze_size_y) {
 
     //Get solving preference
     let prefer_down = false;
@@ -249,12 +262,13 @@ function solver(maze_size_x, maze_size_y) {
                      return;
                  }
              }
+            if(Number(document.getElementById("delaylen").value) > 0) {
+                await new Promise(r => setTimeout(r, Number(document.getElementById("delaylen").value))); 
+             }
         } while (availableDirectionFlag == false);
         //Claim tested points in field
         document.getElementsByClassName(`cell${testX}-${testY}`)[0].dataset.taken = "true";
         document.getElementsByClassName(`cell${testX}-${testY}`)[0].style.backgroundColor = "#999";
-        //document.getElementsByClassName(`cell${testX}-${testY}`)[0].innerHTML = count;
-        sleep(1);
         count++;
 
         //push claimed points onto stack
@@ -271,7 +285,7 @@ function solver(maze_size_x, maze_size_y) {
 
 //Helper functions
 function sleep(ms) {
-    setTimeout(()=>{}, ms);
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function getRandomInt(min, max) {
